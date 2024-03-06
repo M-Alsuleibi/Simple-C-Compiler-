@@ -22,6 +22,17 @@
                     "message": 5
                 }
             }
+            
+        },
+        {
+            "label": "build-compiler-test",
+            "type": "shell",
+            "command": "cc",
+            "args": ["-o", "compiler", "lexer.c", "parser.c", "emitter.c", "symbol.c", "init.c", "error.c", "main.c"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

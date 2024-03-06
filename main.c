@@ -1,6 +1,6 @@
 #include "global.h"
 
-int main() {
+void main() {
     init();
     parse();
     exit(0); // Successful termination

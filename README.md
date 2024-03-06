@@ -1,4 +1,4 @@
-# Simple-C-Compiler-
+# Simple-C-Compiler- <sub>[Book Reference](https://drive.google.com/file/d/10LVcCT-P3RbUJ_kDUBDSiyavalrJRx82/view?usp=sharing)</sub>
 
 ### Here is [instructions for creating a simple compiler in C](https://drive.google.com/file/d/1MqXruiM849l0Eix4f5jot6pyy-fcVgOs/view?usp=sharing)
  split into modules like lexer, parser, emitter, symbol, init, error, and main. It explains how to compile and execute the compiler under UNIX.
@@ -54,6 +54,6 @@ The `global.h` header file contains essential declarations, constants, and funct
 
 6. Run the Compiler:
 
-    - After a successful build, you can run the compiler by executing ./compiler in the terminal within your project directory.
+    - After a successful build, you can run the compiler by executing `./compiler` in the terminal within your project directory.
     - Follow the instructions provided in the original document to exercise the compiler with expressions.
     

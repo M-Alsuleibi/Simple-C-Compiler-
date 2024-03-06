@@ -1,24 +1,49 @@
 #include "global.h"
 
-void emit(int t, int tval) {
-    switch (t) {
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-            printf("%c\n", t);
-            break;
-        case DIV:
-            printf("DIV\n");
-            break;
-        case MOD:
-            printf("MOD\n");
-            break;
-        case NUM:
-            printf("%d\n", tval);
-            break;
-        case ID:
-        default:
-            printf("token %d, tokenval %d\n", t, tval);
+emit(int t, int tval)
+{
+    switch (t)
+    {
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+    case '%':
+    case '\\':
+    case ',':
+    case '(':
+    case ')':
+
+        printf("%c\n", t);
+        break;
+    case DIV:
+        printf("DIV\n");
+        break;
+    case MOD:
+        printf("MOD\n");
+        break;
+    case NUM:
+        printf("%d\n", tval);
+        break;
+    case ID:
+        printf("%s\n", symtable[tval].lexptr);
+        break;
+    // case PROGRAM:
+    //     printf("program");
+    //     break;
+    case POSTFIX:
+        printf("postfix");
+        break;
+    case INFIX:
+        printf("infix");
+        break;
+    case BEGIN:
+        printf("begin \n");
+        break;
+    case END:
+        printf("end");
+        break;
+    default:
+        printf("token %d, tokenval %d\n", t, tval);
     }
 }
