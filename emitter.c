@@ -1,6 +1,6 @@
 #include "global.h"
 
-emit(int t, int tval)
+void emit(int t, int tval)
 {
     switch (t)
     {
@@ -28,9 +28,9 @@ emit(int t, int tval)
     case ID:
         printf("%s\n", symtable[tval].lexptr);
         break;
-    // case PROGRAM:
-    //     printf("program");
-    //     break;
+    case PROGRAM:
+        printf("program");
+        break;
     case POSTFIX:
         printf("postfix");
         break;

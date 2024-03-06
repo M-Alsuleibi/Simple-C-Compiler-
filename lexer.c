@@ -12,8 +12,7 @@ int lexan()
         t = getchar();
         if (t == ' ' || t == '\t')
         {
-            // strip out white space
-            continue;
+            ; // strip out white space
         }
         else if (t == '\n')
         {

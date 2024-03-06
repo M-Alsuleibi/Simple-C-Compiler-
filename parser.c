@@ -2,7 +2,7 @@
 
 int lookahead;
 
-parse()
+void parse()
 {
     lookahead = lexan();
     while (lookahead != DONE)
@@ -37,7 +37,7 @@ parse()
     }
 }
 
-expr()
+void expr()
 {
     int t;
     term();
@@ -58,7 +58,7 @@ expr()
     }
 }
 
-term()
+void term()
 {
     int t;
     factor();
@@ -83,7 +83,7 @@ term()
     }
 }
 
-factor()
+void factor()
 {
     switch (lookahead)
     {
@@ -105,7 +105,7 @@ factor()
     }
 }
 
-match(int t)
+void match(int t)
 {
     if (lookahead == t)
     {

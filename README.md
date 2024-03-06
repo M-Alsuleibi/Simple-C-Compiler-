@@ -14,7 +14,7 @@ The `global.h` header file contains essential declarations, constants, and funct
 1. Create a Header File: If you haven't already, create a `global.h` header file.
 
 2. Install the `build-essential` package.
-
+#### Method 1:
 3. Create a `tasks.json` file in the `.vscode` directory within your project directory. You can use this file to define build tasks.
 
 4. Define a build task that compiles all the source files using the `cc` command. Here's an example `tasks.json` configuration:
@@ -56,4 +56,8 @@ The `global.h` header file contains essential declarations, constants, and funct
 
     - After a successful build, you can run the compiler by executing `./compiler` in the terminal within your project directory.
     - Follow the instructions provided in the original document to exercise the compiler with expressions.
-    
+#### OR Method 2:
+3. Create a Build Script: Since you have multiple files, it's best to create a build script to compile them together. Create a file named `build.sh` in your folder.And
+make sure to grant execute permission to this script by running `chmod +x build.sh` in the terminal.
+
+4. Run the build script by typing `./build.sh` and pressing Enter.
