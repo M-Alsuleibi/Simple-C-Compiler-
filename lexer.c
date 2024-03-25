@@ -1,5 +1,11 @@
 #include "global.h"
 
+int tokenval = NONE;
+int lineno = 1;
+struct entry symtable[BSIZE];
+char lexbuf[BSIZE];
+
+
 int lexan()
 {
     int t;
