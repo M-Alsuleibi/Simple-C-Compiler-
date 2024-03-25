@@ -1,5 +1,5 @@
-// #ifndef GLOBAL_H
-// #define GLOBAL_H
+#ifndef GLOBAL_H
+#define GLOBAL_H
 
 #include <stdio.h>
 #include <ctype.h>
@@ -15,10 +15,9 @@
 #define ID 259
 #define DONE 260
 
-// int tokenval;
-// int lineno ;
-int tokenval = NONE;
-int lineno = 1;
+extern int tokenval;
+extern int lineno ;
+
 
 struct entry
 {
@@ -26,10 +25,10 @@ struct entry
     int token;
 };
 
-struct entry symtable[BSIZE];
+extern struct entry symtable[];
 
-char lexbuf[BSIZE];
-int tokenval = NONE;
+extern char lexbuf[];
+
 
 int lexan();
 void error(char *msg);
@@ -43,4 +42,4 @@ void term();
 void factor();
 void match(int t);
 
-// #endif
+#endif
