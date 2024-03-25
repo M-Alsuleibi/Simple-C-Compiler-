@@ -3,16 +3,7 @@
 struct entry keywords[] = {
     {"div", DIV},
     {"mod", MOD},
-    "program",
-    PROGRAM,
-    "infix",
-    INFIX,
-    "postfix",
-    POSTFIX,
-    "begin",
-    BEGIN,
-    "end",
-    END,
+
     {0, 0}};
 
 void init()

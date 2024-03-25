@@ -1,9 +1,5 @@
 #include "global.h"
 
-char lexbuf[BSIZE];
-int lineno = 1;
-int tokenval = NONE;
-
 int lexan()
 {
     int t;
@@ -12,10 +8,11 @@ int lexan()
         t = getchar();
         if (t == ' ' || t == '\t')
         {
-            ; // strip out white space
+            continue; // strip out white space
         }
         else if (t == '\n')
         {
+
             lineno = lineno + 1;
         }
         else if (t == '#')

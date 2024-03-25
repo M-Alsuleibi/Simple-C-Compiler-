@@ -8,11 +8,6 @@ void emit(int t, int tval)
     case '-':
     case '*':
     case '/':
-    case '%':
-    case '\\':
-    case ',':
-    case '(':
-    case ')':
 
         printf("%c\n", t);
         break;
@@ -28,21 +23,7 @@ void emit(int t, int tval)
     case ID:
         printf("%s\n", symtable[tval].lexptr);
         break;
-    case PROGRAM:
-        printf("program");
-        break;
-    case POSTFIX:
-        printf("postfix");
-        break;
-    case INFIX:
-        printf("infix");
-        break;
-    case BEGIN:
-        printf("begin \n");
-        break;
-    case END:
-        printf("end");
-        break;
+
     default:
         printf("token %d, tokenval %d\n", t, tval);
     }

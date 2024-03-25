@@ -1,42 +1,24 @@
-#include"global.h"
-#define STRMAX 999
-#define SYMMAX 100
-/* size of lexemes array */
-/* size of symtable */
-char lexemes[STRMAX];
-int lastchar = -1;
-struct entry symtable[SYMMAX];
-int lastentry = 0;
-/* last used position in symtable */
-int lookup(s)
-/* returns position of entry for s */
-char s[];
+#include "global.h"
+
+int lookup(char *s)
 {
     int p;
-    for (p = lastentry; p > 0; p = p - 1) {
-        if (strcmp(symtable[p].lexptr, s) == 0) {
+
+    for (p = BSIZE - 1; p >= 0; p--)
+    {
+        if (strcmp(symtable[p].lexptr, s) == 0)
             return p;
-        }
     }
     return 0;
 }
-int insert(s, tok)
-/* returns position of entry for s */
-char s[];
-int tok;
+
+int insert(char *s, int tok)
 {
-    int len;
-    len = strlen(s); /* strlen computes length of s */
-    if (lastentry + 1 >= SYMMAX) {
-        error("symbol table full");
-    }
-    if (lastchar + len + 1 >= STRMAX) {
+    int len = strlen(s);
+    if (len + 1 >= BSIZE)
         error("lexemes array full");
-    }
-    lastentry = lastentry + 1;
-    symtable[lastentry].token = tok;
-    symtable[lastentry].lexptr = &lexemes[lastchar + 1];
-    lastchar = lastchar + len + 1;
-    strcpy(symtable[lastentry].lexptr, s);
-    return lastentry;
+
+    strcpy(symtable[len].lexptr, s);
+    symtable[len].token = tok;
+    return len;
 }

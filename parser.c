@@ -7,33 +7,9 @@ void parse()
     lookahead = lexan();
     while (lookahead != DONE)
     {
-        match(PROGRAM);
 
-        match(ID);
-
-        match('(');
-
-        match(INFIX);
-
-        match(',');
-
-        match(POSTFIX);
-
-        match(')');
-
-        match(BEGIN);
-
-        printf("program");
-        printf("(");
-        printf("infix");
-        printf(",");
-        printf("posfix");
-        printf(")\n");
-        printf("begin \n");
         expr();
         match(';');
-        printf("end");
-        match(END);
     }
 }
 
@@ -70,8 +46,7 @@ void term()
         case '/':
         case DIV:
         case MOD:
-        case '%':
-        case '\\':
+
             t = lookahead;
             match(lookahead);
             factor();

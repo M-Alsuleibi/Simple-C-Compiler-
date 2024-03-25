@@ -61,3 +61,7 @@ The `global.h` header file contains essential declarations, constants, and funct
 make sure to grant execute permission to this script by running `chmod +x build.sh` in the terminal.
 
 4. Run the build script by typing `./build.sh` and pressing Enter.
+
+---
+## Notes:
+- In C programming, the `extern` keyword is used to declare a variable that is defined elsewhere in the program or in another file. This is commonly used in situations where multiple source files need to access the same variable. By using `extern` in a header file, for example, you can declare a variable that is defined in one of the source files that includes the header. It's worth noting that when you use `extern`, you're only declaring the variable; you're not allocating storage for it. The actual storage is allocated when the variable is defined elsewhere.
