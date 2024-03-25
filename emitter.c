@@ -1,30 +1,34 @@
 #include "global.h"
 
-void emit(int t, int tval)
+void emit(FILE *output,int t, int tval)
 {
     switch (t)
     {
-    case '+':
-    case '-':
+    case PLUS:
+    case MINUS:
     case '*':
     case '/':
-
-        printf("%c\n", t);
-        break;
     case DIV:
-        printf("DIV\n");
-        break;
     case MOD:
-        printf("MOD\n");
+    case BACKSLASH:
+    case UNDERSCORE:
+        fprintf(output,"%c\n", t); // Changed to fprintf(output, ...) to write to file
         break;
+    // case DIV:
+    //     fprintf("DIV\n"); 
+    //     break;
+    // case MOD:
+    //     fprintf("MOD\n");
+    //     break;
     case NUM:
-        printf("%d\n", tval);
+        fprintf(output,"%d\n", tval); // Changed to fprintf(output, ...) to write to file
+        break;
         break;
     case ID:
-        printf("%s\n", symtable[tval].lexptr);
+        fprintf(output,"%s\n", symtable[tval].lexptr); // Changed to fprintf(output, ...) to write to file
         break;
 
     default:
-        printf("token %d, tokenval %d\n", t, tval);
+        fprintf(output,"token %d, tokenval %d\n", t, tval); // Changed to fprintf(output, ...) to write to file
     }
 }
