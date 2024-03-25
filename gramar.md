@@ -1,4 +1,4 @@
-Grammar for Simple Compiler Phase 2:
+# Grammar for Simple Compiler Phase 2:
 ```
 expressions -> 'expressions' ID '(' 'infix' ',' 'postfix' ')' 'begin' expr_list 'end'
 
