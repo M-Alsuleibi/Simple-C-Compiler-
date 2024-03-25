@@ -1,7 +1,7 @@
 #include "global.h"
 
 int lookahead;
-
+int lastentry = 0; 
 void parse()
 {
     lookahead = lexan();
@@ -89,5 +89,11 @@ void match(int t)
     else
     {
         error("syntax error");
+    }
+}
+
+void freeSymbolTable() {
+    for (int i = 0; i <= lastentry; ++i) {
+        free(symtable[i].lexptr);
     }
 }

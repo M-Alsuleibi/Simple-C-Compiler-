@@ -16,8 +16,7 @@
 #define DONE 260
 
 extern int tokenval;
-extern int lineno ;
-
+extern int lineno;
 
 struct entry
 {
@@ -28,7 +27,7 @@ struct entry
 extern struct entry symtable[];
 
 extern char lexbuf[];
-
+extern int lastentry;
 
 int lexan();
 void error(char *msg);
@@ -41,5 +40,7 @@ void expr();
 void term();
 void factor();
 void match(int t);
+
+void freeSymbolTable();
 
 #endif

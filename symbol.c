@@ -18,7 +18,12 @@ int insert(char *s, int tok)
     if (len + 1 >= BSIZE)
         error("lexemes array full");
 
-    strcpy(symtable[len].lexptr, s);
-    symtable[len].token = tok;
-    return len;
+    symtable[lastentry].lexptr = malloc(len + 1); // Allocate memory for lexptr
+    if (symtable[lastentry].lexptr == NULL) {
+        error("memory allocation failed"); // Handle allocation failure
+    }
+    
+    strcpy(symtable[lastentry].lexptr, s); // Copy the string into lexptr
+    symtable[lastentry].token = tok;
+    return lastentry;
 }
