@@ -2,31 +2,43 @@
 
 int lookahead;
 int lastentry = 0; 
-void parse()
-{
-    lookahead = lexan();
+void parse(FILE *input, FILE *output)
+{ // Modified to take file input and output
+    lookahead = lexan(input);
     while (lookahead != DONE)
     {
-
-        expr();
-        match(';');
+        expr_list(input, output); // Changed to call expr_list
+        match(input, END);        // Match 'end' token
     }
 }
 
-void expr()
+void expr_list(FILE *input, FILE *output)
+{                              // Added for expr_list production
+    match(input, EXPRESSIONS); // Match 'expressions' token
+    match(input, ID);          // Match identifier token
+    match(input, '(');         // Match '(' token
+    match(input, INFIX);       // Match 'infix' token
+    match(input, ',');         // Match ',' token
+    match(input, POSTFIX);     // Match 'postfix' token
+    match(input, ')');         // Match ')' token
+    match(input, BEGIN);       // Match 'begin' token
+    expr(input, output);       // Call expr to parse expression
+}
+
+void expr(FILE *input, FILE *output)
 {
     int t;
-    term();
+    term(input, output);
     while (1)
     {
         switch (lookahead)
         {
-        case '+':
-        case '-':
+        case PLUS:
+        case MINUS:
             t = lookahead;
-            match(lookahead);
-            term();
-            emit(t, NONE);
+            match(input,lookahead);
+            term(input,output);
+            emit(output,t, NONE);
             continue;
         default:
             return;
@@ -34,10 +46,10 @@ void expr()
     }
 }
 
-void term()
-{
+void term(FILE *input, FILE *output)
+{ // Modified to take file input and output
     int t;
-    factor();
+    factor(input, output);
     while (1)
     {
         switch (lookahead)
@@ -46,11 +58,13 @@ void term()
         case '/':
         case DIV:
         case MOD:
+        case BACKSLASH:
+        case UNDERSCORE:
 
             t = lookahead;
-            match(lookahead);
-            factor();
-            emit(t, NONE);
+            match(input,lookahead);
+            factor(input,output);
+            emit(output,t, NONE);
             continue;
         default:
             return;
@@ -58,33 +72,33 @@ void term()
     }
 }
 
-void factor()
-{
+void factor(FILE *input, FILE *output)
+{  // Modified to take file input and output
     switch (lookahead)
     {
     case '(':
-        match('(');
-        expr();
-        match(')');
+        match(input,'(');
+        expr(input,output);
+        match(input,')');
         break;
     case NUM:
-        emit(NUM, tokenval);
-        match(NUM);
+        emit(output,NUM, tokenval);
+        match(input,NUM);
         break;
     case ID:
-        emit(ID, tokenval);
-        match(ID);
+        emit(output,ID, tokenval);
+        match(input,ID);
         break;
     default:
         error("syntax error");
     }
 }
 
-void match(int t)
+void match(FILE *input, int t)
 {
     if (lookahead == t)
     {
-        lookahead = lexan();
+        lookahead = lexan(input); // Changed to lexan(input) to read from file
     }
     else
     {

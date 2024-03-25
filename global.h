@@ -15,6 +15,24 @@
 #define ID 259
 #define DONE 260
 
+// New token types
+#define EXPRESSIONS 261
+#define INFIX 262
+#define POSTFIX 263
+#define BEGIN 264
+#define END 265
+#define TIMES 266
+#define PLUS 267
+#define MINUS 268
+#define BACKSLASH 269
+#define UNDERSCORE 270
+#define COMMENT 271
+
+// Function prototypes
+int lookup(char *s);
+int insert(char *s, int tok);
+int lexan(FILE *input); // Modified to take file input
+
 extern int tokenval;
 extern int lineno;
 
@@ -29,17 +47,15 @@ extern struct entry symtable[];
 extern char lexbuf[];
 extern int lastentry;
 
-int lexan();
+// Function prototypes for parsing
+void parse(FILE *input, FILE *output);     // Modified to take file input and output
+void expr_list(FILE *input, FILE *output); // Added for expr_list production
+void expr(FILE *input, FILE *output);      // Modified to take file input and output
+void term(FILE *input, FILE *output);      // Modified to take file input and output
+void factor(FILE *input, FILE *output);    // Modified to take file input and output
+void match(FILE *input, int t);            // Modified to take file input
+void emit(FILE *output, int t, int tval);  // Modified to take file output
 void error(char *msg);
-void emit(int t, int tval);
-int lookup(char *s);
-int insert(char *s, int tok);
-void init();
-void parse();
-void expr();
-void term();
-void factor();
-void match(int t);
 
 void freeSymbolTable();
 

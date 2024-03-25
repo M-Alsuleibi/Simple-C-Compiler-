@@ -6,15 +6,15 @@ struct entry symtable[BSIZE];
 char lexbuf[BSIZE];
 
 
-int lexan()
+int lexan(FILE *input)
 {
     int t;
     while (1)
     {
-        t = getchar();
+        t = getc(input);
         if (t == ' ' || t == '\t')
         {
-            continue; // strip out white space
+            ; // strip out white space
         }
         else if (t == '\n')
         {
@@ -32,7 +32,7 @@ int lexan()
         {
             // t is a digit
             ungetc(t, stdin);
-            scanf("%d", &tokenval);
+            fscanf(input, "%d", &tokenval); // Use fscanf instead of scanf
             return NUM;
         }
         else if (isalpha(t))
