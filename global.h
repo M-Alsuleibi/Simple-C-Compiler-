@@ -28,6 +28,30 @@
 #define UNDERSCORE 270
 #define COMMENT 271
 
+// Term Project – Sub-Pascal Compiler - tokens
+#define INPUT 266
+#define OUTPUT 267
+#define CONST 268
+#define VAR 269
+#define EPSILON 270
+#define INTEGER 271
+#define REAL 272
+#define CHAR 273
+#define BOOLEAN 274
+#define IF 275
+#define THEN 276
+#define REPEAT 277
+#define WHILE 278
+#define DO 279
+#define WRITELN 280
+#define UNTIL 281
+#define NOT 282
+#define GREATEREQUAL 283 //>=
+#define LESSEQUAL 284    //<=
+#define NOTEQUAL 285     //<>
+#define OR 286
+#define AND 287
+#define ELSE 288
 // Function prototypes
 int lookup(char *s);
 int insert(char *s, int tok);
