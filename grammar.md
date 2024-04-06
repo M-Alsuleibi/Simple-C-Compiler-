@@ -14,6 +14,7 @@ term' -> '*' factor term' | '/' factor term' | 'DIV' factor term' | 'MOD' factor
 
 factor -> '(' expr ')' | NUM | ID | ID 'times' NUM | ID 'plus' NUM | ID 'minus' NUM
 ```
+
 ## In this grammar:
 
 1. `expressions` is the starting non-terminal representing a list of expressions.
