@@ -166,4 +166,3 @@ To fix this issue, you need to allocate memory for `lexptr` before copying the s
 
 and Don't forget to free the allocated memory when it's no longer needed, typically when you're done with the symbol table. This is why we create `freeSymbolTable()` ,declared its variable `lastentry` and call the function inside `main()`
 
-### Phase 2 :
